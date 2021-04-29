@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="productDAO" class="org.stocks.dao.ProductDAO" />
+	<bean id="typeDAO" class="org.stocks.dao.TypeDAO" />
+	<bean id="userCommandDAO" class="org.stocks.dao.UserCommandDAO" />
+	<bean id="userDAO" class="org.stocks.dao.UserDAO" />
+
+	<bean id="productService"
+		class="org.stocks.services.ProductService">
+		<property name="productDAO" ref="productDAO"></property>
+	</bean>
+	<bean id="typeService" class="org.stocks.services.TypeService">
+		<property name="typeDAO" ref="typeDAO"></property>
+	</bean>
+	<bean id="userCommandService"
+		class="org.stocks.services.UserCommandService">
+		<property name="userCommandDAO" ref="userCommandDAO"></property>
+	</bean>
+	<bean id="userService" class="org.stocks.services.UserService">
+		<property name="userDAO" ref="userDAO"></property>
+	</bean>
+
+	<bean id="productBean" class="org.stocks.beans.ProductBean">
+		<property name="service" ref="productService"></property>
+	</bean>
+	<bean id="typeBean" class="org.stocks.beans.TypeBean">
+		<property name="service" ref="typeService"></property>
+	</bean>
+	<bean id="userCommandBean"
+		class="org.stocks.beans.UserCommandBean">
+		<property name="service" ref="userCommandService"></property>
+	</bean>
+	<bean id="userBean" class="org.stocks.beans.UserBean">
+		<property name="service" ref="userService"></property>
+	</bean>
+
+</beans>

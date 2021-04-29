@@ -1,0 +1,16 @@
+body{
+	padding:0!important;
+	margin:0!important;
+}
+nav a{
+	color:#ffff !important;
+}
+nav.navbar.navbar-expand-lg.navbar-light {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+}
+nav ul{
+	list-style:none;
+}
