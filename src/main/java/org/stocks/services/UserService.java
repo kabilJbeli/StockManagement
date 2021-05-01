@@ -41,6 +41,11 @@ public boolean removeUser(int id) {
 }
 
 @Override
+public boolean validate(String login, String password) {
+	return userDAO.validate(login, password);
+}
+
+@Override
 public User getUser(String Name) {
 	// TODO Auto-generated method stub
 	return userDAO.getUser(Name);
@@ -50,5 +55,11 @@ public User getUser(String Name) {
 public User getUser(int id) {
 	// TODO Auto-generated method stub
 	return userDAO.getUser(id);
+}
+
+@Override
+public User getUser(String username, String password) {
+	// TODO Auto-generated method stub	
+	return userDAO.getUser(username,password);
 }
 }

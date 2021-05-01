@@ -11,4 +11,6 @@ public interface IUserService {
 	public boolean removeUser(int id);
 	public User getUser(String Name);	
 	public User getUser(int id);
+	public boolean validate(String login, String password);
+	public User getUser(String username, String password);
 }

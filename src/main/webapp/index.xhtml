@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://xmlns.jcp.org/jsf/html"
+<html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
-	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	 xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport"
@@ -20,7 +17,7 @@
 </h:head>
 <body>
 	<ui:include src="/WEB-INF/Menu.xhtml"></ui:include>
-	<div class="container mt-3">
+	<div class="container-fluid mt-3">
 		<h:form>
 			<div class="modal fade" id="productModal" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,13 +33,13 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<h:inputText placeholder="product name"
+							<p:inputText placeholder="product name"
 								value="#{productBean.productname}" required="true" />
 							<br />
-							<h:inputText placeholder="Price" value="#{productBean.price}"
+							<p:inputText type="number" placeholder="Price" value="#{productBean.price}"
 								required="true" />
 							<br />
-							<h:inputText placeholder="Quantity"
+							<p:inputText type="number" placeholder="Quantity"
 								value="#{productBean.quantity}" required="true" />
 							<br />
 							<h:selectOneMenu id="speciality_selection"
@@ -54,7 +51,7 @@
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Close</button>
-							<h:commandButton class="btn btn-primary" value="submit"
+							<p:commandButton class="btn btn-primary" value="submit"
 								action="#{productBean.createProduct()}" update="@form" />
 						</div>
 					</div>
@@ -63,37 +60,40 @@
 		</h:form>
 		<h:form>
 			<button type="button" class="btn btn-primary" data-toggle="modal"
-				data-target="#productModal">Add Product</button>
-			<h:dataTable class="table  table-striped mt-3"
+				data-target="#productModal">Add New Product</button>
+			<p:dataTable class="table  table-striped mt-3"
 				value="#{productBean.products}" var="product" border="0"
 				cellspacing="1" cellpadding="1">
-				<h:column>
+				<p:column>
 					<f:facet name="header">Product ID</f:facet>
                     #{product.idproduct}
-                </h:column>
-				<h:column>
+                </p:column>
+				<p:column>
 					<f:facet name="header">Product Name</f:facet>
                     #{product.productname}
-                </h:column>
-				<h:column>
+                </p:column>
+				<p:column>
 					<f:facet name="header">Product Quantity</f:facet>
                     #{product.quantity}
-                </h:column>
-				<h:column>
+                </p:column>
+				<p:column>
 					<f:facet name="header">Product Price</f:facet>
                     #{product.price}
-                </h:column>
-				<h:column>
+                </p:column>
+				<p:column>
 					<f:facet name="header">Product Type</f:facet>
 				  #{product.type.typename} 
-                </h:column>
-				<h:column>
+                </p:column>
+				<p:column>
 					<f:facet name="header">Action</f:facet>
-					<h:commandButton value="Remove"
+					<p:commandButton value="Remove"
 						action="#{productBean.removeProduct(product.idproduct)}"
-						update="@form"></h:commandButton>
-				</h:column>
-			</h:dataTable>
+						update="@form"></p:commandButton>
+						<p:commandButton value="Update"
+						action="#{productBean.removeProduct(product.idproduct)}"
+						update="@form"></p:commandButton>
+				</p:column>
+			</p:dataTable>
 		</h:form>
 	</div>
 	<h:outputScript library="js" name="jquery-3.2.1.slim.min.js" />

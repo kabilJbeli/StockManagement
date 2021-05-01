@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.stocks.entities.Type;
 import org.stocks.utils.HibernateUtils;
 
@@ -126,5 +127,54 @@ public class UserDAO implements IUser {
 		session.close();
 		return user;
 	}
+	
+	@Override
+	public boolean validate(String login, String password) {
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
 
+		try {
+			tx = session.beginTransaction();
+			String sql = "Select u from User u Where u.username = :login and u.password = :password";
+			Query<User> query = session.createQuery(sql);
+			query.setParameter("login", login);
+			query.setParameter("password", password);
+			tx.commit();
+			if (query.getSingleResult() != null) {
+				session.close();
+
+				return true;
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			session.close();
+			return false;
+		}
+		session.close();
+		return false;
+	}
+
+	@Override
+	public User getUser(String username, String password) {
+		// TODO Auto-generated method stub
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		User user=null;
+		try {
+			tx = session.beginTransaction();
+			String sql = "Select u from User u Where u.username = :login and u.password = :password";
+			Query<User> query = session.createQuery(sql);
+			query.setParameter("login", username);
+			query.setParameter("password", password);
+			tx.commit();
+			user = query.getSingleResult();			
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			session.close();
+		}
+		session.close();
+		return user;
+	}
 }

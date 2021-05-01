@@ -23,6 +23,17 @@ public class User implements Serializable {
 
 	private String username;
 
+	private int isAdmin=0;
+	
+	
+	public int getIsAdmin() {
+		return isAdmin;
+	}
+
+	public void setIsAdmin(int isAdmin) {
+		this.isAdmin = isAdmin;
+	}
+
 	//bi-directional many-to-one association to UserCommand
 	@OneToMany(mappedBy="user")
 	private List<UserCommand> userCommands;

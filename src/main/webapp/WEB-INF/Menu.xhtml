@@ -1,4 +1,7 @@
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+
+>
 	<style>
 nav.navbar.navbar-expand-lg.navbar-light {
 	display: flex;
@@ -27,15 +30,25 @@ nav ul {
 </style>
 	<nav class="navbar navbar-expand-lg navbar-light bg-primary ">
 		<div class="collapse navbar-collapse" id="navbarText">
-			<ul class="navbar-nav mr-auto">
+			<ul  style="margin: 0;" class="navbar-nav">
 				<li class="nav-item active"><a class="nav-link"
-					href="/stocks/index.xhtml">Products <span class="sr-only">(current)</span></a>
+					href="/stocks/index.xhtml">Products<span class="sr-only">(current)</span></a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					href="/stocks/types.xhtml">Types</a></li>
+					href="/stocks/types.xhtml">Category</a></li>
 				<li class="nav-item"><a class="nav-link"
-					href="/stocks/clients.xhtml">Commands By Clients</a></li>
+					href="/stocks/clients.xhtml">Orders By Clients</a></li>
 			</ul>
+		</div>
+		<div>
+		<ul style="    margin: 0;
+    justify-content: flex-end;">
+		<li>
+		<h:form>
+		<h:commandLink action="#{userBean.logout}" value="Logout"></h:commandLink>
+		</h:form>
+		</li>
+		</ul>
 		</div>
 	</nav>
 </ui:composition>

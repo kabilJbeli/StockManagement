@@ -14,3 +14,9 @@ nav.navbar.navbar-expand-lg.navbar-light {
 nav ul{
 	list-style:none;
 }
+#authentification,#Register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}

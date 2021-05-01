@@ -81,8 +81,7 @@ public class ProductBean  implements Serializable{
 		  product.setType(type);
 		  price=0;
 		  quantity=0;
-		  productname=null;
-		  
+		  productname=null;		  
 		  return service.setProduct(product);
 	  }
 	    

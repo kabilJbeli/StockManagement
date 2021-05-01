@@ -11,6 +11,10 @@ import org.stocks.services.TypeService;
 
 @SessionScoped
 public class TypeBean  implements Serializable{
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 private TypeService service;
 private String typename;
 public String getTypename() {
