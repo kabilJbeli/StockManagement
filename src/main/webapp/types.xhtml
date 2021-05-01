@@ -7,9 +7,7 @@
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
 	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
-	xmlns:p="http://primefaces.org/ui"
-	  xmlns:b="http://bootsfaces.net/ui"
-	>
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport"
@@ -22,39 +20,41 @@
 </h:head>
 <body>
 	<ui:include src="/WEB-INF/Menu.xhtml"></ui:include>
-	<div class="container">
-	<h:form>
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-    <h:inputText placeholder="type name" value="#{stockBean.typename}" required="true" />
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        
-            <h:commandButton class="btn btn-primary" value="submit" action="#{stockBean.createType}" update="@form" />
-        
-      </div>
-    </div>
-  </div>
-</div>
-</h:form>
+	<div class="container mt-3">
 		<h:form>
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+				aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Add a New Type</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">
+									&times;
+								</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<h:inputText placeholder="type name" value="#{typeBean.typename}"
+								required="true" />
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Close</button>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
+							<h:commandButton class="btn btn-primary" value="submit"
+								action="#{typeBean.createType()}" update="@form" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</h:form>
+		<h:form>
+			<button type="button" class="btn btn-primary" data-toggle="modal"
+				data-target="#exampleModal">Add Type</button>
 			<h:dataTable class="table  table-striped mt-3"
-				value="#{stockBean.types}" var="type" border="0" cellspacing="1"
+				value="#{typeBean.types}" var="type" border="0" cellspacing="1"
 				cellpadding="1">
 				<h:column>
 					<f:facet name="header">Type ID</f:facet>
@@ -66,9 +66,8 @@
                 </h:column>
 				<h:column>
 					<f:facet name="header">Action</f:facet>
-					<p:commandButton value="Remove"
-						action="#{stockBean.removeType(type.idtype)}"
-						update="@form" />
+					<h:commandButton value="Remove"
+						action="#{typeBean.removeType(type.idtype)}" update="@form" />
 				</h:column>
 			</h:dataTable>
 		</h:form>
@@ -76,6 +75,5 @@
 	<h:outputScript library="js" name="jquery-3.2.1.slim.min.js" />
 	<h:outputScript library="js" name="popper.min.js" />
 	<h:outputScript library="js" name="bootstrap.min.js" />
-	
 </body>
 </html>

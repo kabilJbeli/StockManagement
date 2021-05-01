@@ -6,7 +6,8 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	xmlns:cc="http://xmlns.jcp.org/jsf/composite"
-	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions">
+	xmlns:fn="http://xmlns.jcp.org/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 	<meta name="viewport"
@@ -18,7 +19,20 @@
 
 </h:head>
 <body>
-	<ui:include src="/WEB-INF/Menu.xhtml"></ui:include>
-	<div class="container mt-3">Clients</div>
+	<div class="container mt-3">
+		<h:form>
+			<h:inputText placeholder="user name" value="#{userBean.username}"
+				required="true" />
+			<br />
+			<h:inputText placeholder="last name" value="#{userBean.lastname}"
+				required="true" />
+			<br />
+			<h:inputText id="speciality_selection" value="#{userBean.password}"
+				required="true" />
+			<br />
+			<h:commandButton class="btn btn-primary" value="Create User"
+				action="#{userBean.createUser()}" update="@form" />
+		</h:form>
+	</div>
 </body>
 </html>

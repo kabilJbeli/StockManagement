@@ -19,7 +19,7 @@ public void setTypeDAO(TypeDAO typeDAO) {
 @Override
 public boolean setType(Type type) {
 	// TODO Auto-generated method stub
-	return false;
+	return typeDAO.setType(type);
 }
 
 @Override

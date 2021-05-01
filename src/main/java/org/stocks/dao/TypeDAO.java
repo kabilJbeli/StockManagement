@@ -18,11 +18,12 @@ public class TypeDAO implements IType {
 		// TODO Auto-generated method stub
 		SessionFactory factory = HibernateUtils.getSessionFactory();
 		Session session = factory.openSession();
+		Transaction tx = null;
 
 		try {
-			session.getTransaction().begin();
+			tx = session.beginTransaction();
 			session.persist(type);
-			session.getTransaction().commit();
+			tx.commit();
 			session.close();
 			return true;
 

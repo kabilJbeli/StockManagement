@@ -1,5 +1,14 @@
 package org.stocks.services;
 
-public interface IUserService {
+import java.util.List;
 
+import org.stocks.entities.User;
+
+public interface IUserService {
+	public boolean setUser(User user);
+	public List<User> getAll();
+	public boolean updateUser(User user);
+	public boolean removeUser(int id);
+	public User getUser(String Name);	
+	public User getUser(int id);
 }

@@ -44,12 +44,14 @@ public class ProductDAO implements IProduct {
 		Transaction tx = null;
 		List<Product> products = new ArrayList<Product>();
 		try {
-			tx = session.beginTransaction();
-			Criteria criteria = session.createCriteria(Product.class);
-			products = criteria.list();
+			tx = session.beginTransaction();		
+			Criteria crit = session.createCriteria(Product.class);
+
+			products = crit.list();
 
 			System.out.println("products" + products.toString());
 			tx.commit();
+			products = crit.list();
 
 			products.forEach((product) -> System.out.println(product.getProductname()));
 		} catch (Exception e) {

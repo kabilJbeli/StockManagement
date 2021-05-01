@@ -1,41 +1,41 @@
-<ui:composition 
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    <style>
-    nav.navbar.navbar-expand-lg.navbar-light {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: flex-end;
-    border-radius:0;
-    border:none;
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+	<style>
+nav.navbar.navbar-expand-lg.navbar-light {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	justify-content: flex-end;
+	border-radius: 0;
+	border: none;
 }
-nav ul{
-	list-style:none;
-}
-a{
-color:#ffff;}
+
 nav ul {
-    list-style: none;
-    padding-left: 0;
-    display: flex;
-    min-width: 350px;
-    justify-content: space-between;
+	list-style: none;
+}
+
+a {
+	color: #ffff;
+}
+
+nav ul {
+	list-style: none;
+	padding-left: 0;
+	display: flex;
+	min-width: 350px;
+	justify-content: space-between;
 }
 </style>
-   <nav class="navbar navbar-expand-lg navbar-light bg-primary ">
-
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/index.xhtml">Products <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/types.xhtml">Types</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/clients.xhtml">Clients</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+	<nav class="navbar navbar-expand-lg navbar-light bg-primary ">
+		<div class="collapse navbar-collapse" id="navbarText">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link"
+					href="/stocks/index.xhtml">Products <span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					href="/stocks/types.xhtml">Types</a></li>
+				<li class="nav-item"><a class="nav-link"
+					href="/stocks/clients.xhtml">Commands By Clients</a></li>
+			</ul>
+		</div>
+	</nav>
 </ui:composition>
