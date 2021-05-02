@@ -20,7 +20,16 @@ public class ProductBean  implements Serializable{
 	private ProductService service;
 
 	int productType;
+	int selectedUser;
 	
+	public int getSelectedUser() {
+		return selectedUser;
+	}
+
+	public void setSelectedUser(int selectedUser) {
+		this.selectedUser = selectedUser;
+	}
+
 	public int getProductType() {
 		return productType;
 	}

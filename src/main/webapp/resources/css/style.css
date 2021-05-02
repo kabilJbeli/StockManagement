@@ -115,3 +115,64 @@ button.btn, button {
 	border-radius: 0 !important;
 	line-height: 1.2;
 }
+span.badge {
+    font-family: arial !important;
+    font-size: 13px;
+    font-weight: 100;
+}
+span.badge.PENDING {
+    background: #ffc107;
+}
+span.badge.APPROVED {
+    background: #28a745;
+}
+span.badge.REJECTED {
+    background: #dc3545;
+}
+button.close {
+    background: transparent;
+    font-size: 25px;
+    line-height: 1;
+    outline:none;
+}
+.status{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+table button, .modal button  {
+    padding: 0 !important;
+}
+.ui-button-text-only .ui-button-text {
+    padding: .3em 1em;
+    display: block;
+    line-height: 1;
+    font-weight: 400;
+}
+.modal.show .modal-dialog {
+    transform: none;
+    max-width: 60% !important;
+    border-radius: 0 !important;
+}
+nav a{
+	text-decoration:none;
+}
+nav a:hover{
+	text-decoration:underline;
+}
+.ui-chkbox-box.ui-widget {
+    background: #fff;
+    outline: none;
+    border-radius: 0;
+    border: none !important;
+}
+span.ui-chkbox-icon.ui-icon,.ui-chkbox .ui-chkbox-box {
+    border-radius: 0 !important;
+}
+td.ui-state-default, th.ui-state-default{
+    border-bottom: none !important;
+    border-left:none !important;
+}
+.ui-chkbox .ui-chkbox-label {
+    line-height: 1.25 !important;
+}

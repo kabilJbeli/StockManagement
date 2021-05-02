@@ -1,6 +1,7 @@
 package org.stocks.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.faces.bean.SessionScoped;
 import javax.servlet.http.HttpSession;
@@ -23,6 +24,10 @@ public class UserBean implements Serializable {
 	private boolean isAdmin;
 	private String msg;
 	private String msgCreation;
+	
+	public List<User> getUserList(){
+		return service.getAll();
+	}
 
 	public String getMsgCreation() {
 		return msgCreation;

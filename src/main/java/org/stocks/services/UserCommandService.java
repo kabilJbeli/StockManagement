@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.stocks.dao.UserCommandDAO;
 import org.stocks.entities.UserCommand;
+import org.stocks.enums.Status;
 
 public class UserCommandService implements IUserCommandService {
 
@@ -23,9 +24,16 @@ public class UserCommandService implements IUserCommandService {
 		return userCommandDAO.setCommand(command);
 	}
 
+	
 	@Override
 	public List<UserCommand> getUserCommands(int iduser) {
 		// TODO Auto-generated method stub
 		return userCommandDAO.getUserCommands(iduser);
+	}
+
+	@Override
+	public void updateOrder(int idcommand, Status status) {
+		// TODO Auto-generated method stub
+		userCommandDAO.updateOrder(idcommand,status);
 	}
 }

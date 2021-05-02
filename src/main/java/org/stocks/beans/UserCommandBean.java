@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 import org.stocks.entities.Product;
 import org.stocks.entities.User;
 import org.stocks.entities.UserCommand;
+import org.stocks.enums.Status;
 import org.stocks.services.UserCommandService;
 
 @SessionScoped
@@ -17,6 +18,15 @@ public class UserCommandBean implements Serializable {
 	private int productType;
 	private int quantity;
 	public static int userId;
+	private Status status;
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	public int getUserId() {
 		HttpSession session = SessionUtils.getSession();
@@ -66,10 +76,18 @@ public class UserCommandBean implements Serializable {
 
 		return service.createCommand(command);
 	}
-	
-	public List<UserCommand> getCommandsByUserId() {
-		HttpSession session = SessionUtils.getSession();
 
-		return service.getUserCommands((int) session.getAttribute("userId"));	
-		}
+	public List<UserCommand> getCommandsByUserId(int userid) {
+
+		return service.getUserCommands(userid);
+	}
+
+	public void rejectOrder(int userid) {
+		service.updateOrder(userid, status.REJECTED);
+	}
+
+	public void acceptOrder(int userid) {
+		service.updateOrder(userid, status.APPROVED);
+
+	}
 }

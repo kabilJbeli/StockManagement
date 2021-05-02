@@ -53,8 +53,9 @@
 							</h:selectOneMenu>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-secondary ui-button-text-only "
+								data-dismiss="modal"><span class="ui-button-text">Close</span></button>
+
 							<h:commandButton class="btn btn-primary" value="submit"
 								action="#{productBean.createProduct()}" update="@form" />
 						</div>
@@ -94,8 +95,9 @@
 							</h:selectOneMenu>
 						</div>
 						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-secondary ui-button-text-only "
+								data-dismiss="modal"><span class="ui-button-text">Close</span></button>
+
 							<p:commandButton class="btn btn-primary" value="submit"
 								action="#{productBean.createProduct()}" update="@form" />
 						</div>
@@ -106,7 +108,9 @@
 		<h:form>
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#productModal">Add New Product</button>
-			<p:dataTable class="table  table-striped mt-3"
+			<h2 class="mt-4">Product List</h2>
+			<br/>
+			<p:dataTable class="table  table-striped"
 				value="#{productBean.products}" var="product" border="0"
 				cellspacing="1" cellpadding="1">
 				<p:column>
@@ -118,7 +122,11 @@
                     #{product.productname}
                 </p:column>
 				<p:column>
-					<f:facet name="header">Product Quantity</f:facet>
+					<f:facet name="header">Initial Quantity</f:facet>
+                    #{product.quantity}
+                </p:column>
+                	<p:column>
+					<f:facet name="header">Available Quantity</f:facet>
                     #{product.quantity}
                 </p:column>
 				<p:column>
@@ -138,9 +146,7 @@
 
 					<p:commandButton type="button"
 						action="#{productBean.productType(product.idproduct)}"
-						class="btn btn-primary" value="Update"
-						onclick="showModal()"
-						 />
+						class="btn btn-primary" value="Update" onclick="showModal()" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

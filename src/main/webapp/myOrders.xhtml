@@ -17,34 +17,32 @@
 <body>
 
 	<ui:include src="/WEB-INF/clientMenu.xhtml"></ui:include>
-		<div class="container-fluid">
-	
-<h2>My Orders</h2>
+	<div class="container-fluid">
+
+		<h2>My Orders</h2>
 		<h:form>
 			<p:dataTable class="table  table-striped mt-3"
-				value="#{userCommandBean.getCommandsByUserId()}" var="order" border="0"
-				cellspacing="1" cellpadding="1">
+				value="#{userCommandBean.getCommandsByUserId(userCommandBean.getUserId())}" var="order"
+				border="0" cellspacing="1" cellpadding="1">
 				<p:column>
 					<f:facet name="header">Order ID</f:facet>
                     #{order.idcommand}
                 </p:column>
-                
 				<p:column>
 					<f:facet name="header">Quantity</f:facet>
                     #{order.quantity}
                 </p:column>
-                <p:column>
+				<p:column>
 					<f:facet name="header">Product Name</f:facet>
                     #{order.product.productname}
                 </p:column>
-                
-                 <p:column>
+				<p:column class="status">
 					<f:facet name="header">Order Status</f:facet>
-
+					<span class="badge #{order.status}">#{order.status}</span>
                 </p:column>
 			</p:dataTable>
 		</h:form>
-</div>
+	</div>
 	<h:outputScript library="js" name="jquery-3.2.1.slim.min.js" />
 	<h:outputScript library="js" name="popper.min.js" />
 	<h:outputScript library="js" name="bootstrap.min.js" />

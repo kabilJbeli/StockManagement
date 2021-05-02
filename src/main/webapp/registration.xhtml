@@ -49,11 +49,11 @@
 						value="#{userBean.password}" required="true"></p:password>
 					<br />
 					<p:selectBooleanCheckbox class="mb-3 mt-1"
-						value="#{userBean.isAdmin}" itemLabel="Administrateur" />
+						value="#{userBean.isAdmin}" itemLabel="Administrator" />
 					<br />
 					<div class="action-wrapper">
 
-						<h:commandButton class="btn btn-primary" value="Create User"
+						<p:commandButton class="btn btn-primary" value="Create User"
 							action="#{userBean.createUser()}" update="@form" />
 						<p:button href="/stocks/login.xhtml" value="Sign In Page" />
 

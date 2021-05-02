@@ -3,6 +3,8 @@ package org.stocks.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.stocks.enums.Status;
+
 
 /**
  * The persistent class for the user_command database table.
@@ -15,9 +17,21 @@ public class UserCommand implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int idcommand;
 
 	private int quantity;
+
+	@Enumerated(EnumType.ORDINAL)
+    private Status status =Status.PENDING;
+	
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
 
 	//bi-directional many-to-one association to User
 	@ManyToOne
