@@ -75,30 +75,27 @@
 		<h2>Clients List</h2>
 		<br />
 		<h:form id="clients">
-			<h:inputHidden id="userid" value="#{productBean.selectedUser}" />			
-		
-			<p:dataTable class="table  table-striped"
-				value="#{userBean.getUserList()}" var="user" border="0"
+			<h:inputHidden id="userid" value="#{productBean.selectedUser}" />
+
+			<p:dataTable class="table table-striped"
+				value="#{userBean.getRegularUserList()}" var="user" border="0"
 				cellspacing="1" cellpadding="1">
-				<p:column rendered='#{user.isAdmin != 1}'>
+				<p:column>
 					<f:facet name="header">User ID</f:facet>
                     #{user.iduser}
                 </p:column>
-				<p:column rendered='#{user.isAdmin != 1}'>
+				<p:column>
 					<f:facet name="header">User Name</f:facet>
                     #{user.username}
                 </p:column>
-				<p:column rendered='#{user.isAdmin != 1}'>
+				<p:column>
 					<f:facet name="header">User Last Name</f:facet>
                     #{user.lastname}
                 </p:column>
-				<p:column rendered='#{user.isAdmin != 1}'
-					class="d-flex justify-content-center">
+				<p:column class="d-flex justify-content-center">
 					<f:facet name="header">Actions</f:facet>
-					<p:commandButton value="Consult Orders" type="button" 
-						onclick="showModal(event,#{user.iduser});" update="order"
-						/>
-						
+					<p:commandButton value="Consult Orders" type="button"
+						onclick="showModal(event,#{user.iduser});" update="order" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

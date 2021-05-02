@@ -1,6 +1,7 @@
 package org.stocks.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.SessionScoped;
@@ -24,6 +25,20 @@ public class UserBean implements Serializable {
 	private boolean isAdmin;
 	private String msg;
 	private String msgCreation;
+	
+	
+	public List<User> getRegularUserList(){
+		List<User> users = service.getAll();
+		List<User> regularUsers  = new ArrayList<User>();
+		users.forEach((element)->{
+			if(element.getIsAdmin()==0) {
+				regularUsers.add(element);
+			}
+			
+		});
+		return regularUsers;
+	}
+
 	
 	public List<User> getUserList(){
 		return service.getAll();
