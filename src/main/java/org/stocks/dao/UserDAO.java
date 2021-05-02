@@ -166,6 +166,7 @@ public class UserDAO implements IUser {
 			tx = session.beginTransaction();
 			String sql = "Select u from User u Where u.username = :login and u.password = :password";
 			Query<User> query = session.createQuery(sql);
+	
 			query.setParameter("login", username);
 			query.setParameter("password", password);
 			tx.commit();

@@ -15,7 +15,7 @@ public class UserCommand implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	private String idcommand;
+	private int idcommand;
 
 	private int quantity;
 
@@ -32,11 +32,11 @@ public class UserCommand implements Serializable {
 	public UserCommand() {
 	}
 
-	public String getIdcommand() {
+	public int getIdcommand() {
 		return this.idcommand;
 	}
 
-	public void setIdcommand(String idcommand) {
+	public void setIdcommand(int idcommand) {
 		this.idcommand = idcommand;
 	}
 

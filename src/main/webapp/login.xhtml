@@ -3,30 +3,48 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html"
-	 xmlns:ui="http://java.sun.com/jsf/facelets"
-	  xmlns:p="http://primefaces.org/ui">
-	  <h:head>
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
 	<title>login</title>
-		<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+
 	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="login.css" />
 </h:head>
 <h:body>
-	<h:form id="authentification">
-	<p:panel header="Authentification" style="width: 500px;">
-		<p:outputLabel  value="Username" />
-		<p:inputText id="username" value="#{userBean.username}"></p:inputText>
-		<p:message for="username"></p:message>
-		<br></br><br></br>
-		
-		<p:outputLabel  value="Password" />
-		<p:password id="password" value="#{userBean.password}"></p:password>
-		<p:message for="password"></p:message>
-		<br></br><br></br>
-		 <p:outputLabel value="#{userBean.msg}" style="color: red"/>
-		<br></br><br></br>
-		<p:commandButton action="#{userBean.validateUsernamePassword}"
-			value="Login" ajax="false" update="authentification"></p:commandButton>
-	</p:panel>		
-	</h:form>
+
+
+	<div class="container container-wrapper">
+		<div class="form-container-description">
+			<span>Welcome to the New</span>
+			<h1>Stock Management Application</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+				sodales tellus lorem, nec rutrum sapien ultricies non. Interdum et
+				malesuada fames ac ante ipsum primis in faucibus. Interdum et
+				malesuada fames ac ante ipsum primis in faucibus. Praesent venenatis
+				varius purus, ac fringilla dui volutpat quis. Donec nec feugiat est,
+				id molestie orci.</p>
+		</div>
+		<div class="form-container">
+			<h:form id="authentification">
+				<p:panel header="Sign In" style="width: 500px;">
+					<p:outputLabel value="#{userBean.msg}" style="color: red" />
+
+					<p:outputLabel value="Username" />
+					<p:inputText id="username" value="#{userBean.username}"></p:inputText>
+					<br />
+					<p:outputLabel value="Password" />
+					<p:password id="password" value="#{userBean.password}"></p:password>
+					<br />
+					<div class="action-wrapper">
+						<p:commandButton action="#{userBean.validateUsernamePassword}"
+							value="Sign In" ajax="false" update="authentification"></p:commandButton>
+						<p:button href="/stocks/registration.xhtml" value="Sign Up" />
+					</div>
+				</p:panel>
+			</h:form>
+		</div>
+	</div>
 </h:body>
 </html>

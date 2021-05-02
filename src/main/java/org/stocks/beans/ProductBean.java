@@ -20,12 +20,21 @@ public class ProductBean  implements Serializable{
 	private ProductService service;
 
 	int productType;
+	
 	public int getProductType() {
 		return productType;
 	}
 
 	public void setProductType(int productType) {
 		this.productType = productType;
+		Product product = null;
+		product = service.getProduct(productType);
+		if(product != null) {
+			productname = product.getProductname();
+			quantity =Integer.parseInt(product.getQuantity());
+			price = Integer.parseInt(product.getPrice());
+			
+		}
 	}
 
 	String productname;

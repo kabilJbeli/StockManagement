@@ -5,5 +5,9 @@
 		<class>org.stocks.entities.Type</class>
 		<class>org.stocks.entities.User</class>
 		<class>org.stocks.entities.UserCommand</class>
+		<properties>
+			<property name="javax.persistence.schema-generation.database.action" value="create"/>
+			<property name="javax.persistence.schema-generation.scripts.action" value="create"/>
+		</properties>
 	</persistence-unit>
 </persistence>

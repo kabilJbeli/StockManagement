@@ -13,32 +13,56 @@
 	<title>Stock Management</title>
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="login.css" />
+
 
 </h:head>
 <body>
-	<div class="container-fluid mt-3">
-		<h:form id="Register">
-			<p:panel header="Register" style="width: 500px;">
 
-				<p:outputLabel value="#{userBean.msgCreation}" style="color: green" />
-				<br />
 
-				<p:inputText placeholder="user name" value="#{userBean.username}"
-					required="true" />
-				<br />
-				<p:inputText placeholder="last name" value="#{userBean.lastname}"
-					required="true" />
-				<br />
-				<p:password id="speciality_selection" value="#{userBean.password}"
-					required="true"></p:password>
-				<br />
-				<p:selectBooleanCheckbox value="#{userBean.isAdmin}"
-					itemLabel="Admin" />
-				<br />
-				<p:commandButton class="btn btn-primary" value="Create User"
-					action="#{userBean.createUser()}" update="@form" />
-			</p:panel>
-		</h:form>
+
+	<div class="container container-wrapper">
+		<div class="form-container-description">
+			<span>Welcome to the New</span>
+			<h1>Stock Management Application</h1>
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis
+				sodales tellus lorem, nec rutrum sapien ultricies non. Interdum et
+				malesuada fames ac ante ipsum primis in faucibus. Interdum et
+				malesuada fames ac ante ipsum primis in faucibus. Praesent venenatis
+				varius purus, ac fringilla dui volutpat quis. Donec nec feugiat est,
+				id molestie orci.</p>
+		</div>
+		<div class="form-container">
+			<h:form id="Register">
+				<p:panel header="Sign Up" style="width: 500px;">
+
+					<p:outputLabel value="#{userBean.msgCreation}" style="color: green" />
+					<br />
+
+					<p:inputText placeholder="user name" value="#{userBean.username}"
+						required="true" />
+					<br />
+					<p:inputText placeholder="last name" value="#{userBean.lastname}"
+						required="true" />
+					<br />
+					<p:password id="speciality_selection" placeholder="password"
+						value="#{userBean.password}" required="true"></p:password>
+					<br />
+					<p:selectBooleanCheckbox class="mb-3 mt-1"
+						value="#{userBean.isAdmin}" itemLabel="Administrateur" />
+					<br />
+					<div class="action-wrapper">
+
+						<h:commandButton class="btn btn-primary" value="Create User"
+							action="#{userBean.createUser()}" update="@form" />
+						<p:button href="/stocks/login.xhtml" value="Sign In Page" />
+
+					</div>
+				</p:panel>
+			</h:form>
+		</div>
 	</div>
+
+
 </body>
 </html>

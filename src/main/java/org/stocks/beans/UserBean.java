@@ -16,7 +16,7 @@ public class UserBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private UserService service;
-	
+	private UserCommandBean userCommandBean = new UserCommandBean();
 	private String password;
 	private String lastname;
 	private String username;
@@ -100,6 +100,7 @@ public class UserBean implements Serializable {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", username);
 			User user = service.getUser(username,password);
+			userCommandBean.setUserId(user.getIduser());
 			if(user.getIsAdmin() == 1) {
 			return "admin";
 			}

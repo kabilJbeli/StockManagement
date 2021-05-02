@@ -1,0 +1,103 @@
+@charset "ISO-8859-1";
+
+.container.container-wrapper {
+    z-index: 333333333333333;
+    position: relative;
+    justify-content: flex-end !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    right: 0;
+    max-width: 100% !important;
+    display: flex;
+}
+
+.form-container-description {
+    width: 50%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    padding: 30px;
+}
+.form-container-description h1 {
+    font-size: 45px;
+}
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fff;
+    padding: 0px !important;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    background: url("#{resource['img/tablet-on-a-city-background.jpg']}");
+    
+    background-repeat: no-repeat;
+    animation: gradientBG 20s ease-in-out infinite;
+    overflow: hidden;
+        background-size: cover;
+}
+.form-container::before {
+    content: '';
+    width: 50%;
+    height: 100vh;
+    position: absolute;
+    background: #000;
+    opacity: 0.4;
+    z-index: 0;
+}
+@keyframes gradientBG{
+0%{
+    background-position:0% 50%;
+}
+50%{
+    background-position:100% 50%;
+}
+100%{
+    background-position:0% 50%;
+}
+}
+
+.ui-widget-content {
+	background: transparent !important;
+	border: none;
+	border-radius: 0 !important;
+	padding: 20px !important;
+}
+
+.ui-widget-header {
+	background: transparent;
+	border: none;
+	color: #8adbda;
+	text-align: center;
+	font-size: 18px;
+	font-family: arial;
+	font-weight: 800;
+}
+.ui-widget-header .ui-inputfield, .ui-widget-content .ui-inputfield {
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding-left: 5px;
+}
+.action-wrapper{
+	display:flex;
+	justify-content:space-between;
+}
+.action-wrapper button {
+    width: 49%;
+    border: none;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: rgb(239, 239, 239) !important;
+    margin-bottom: 15px;
+}
+span.ui-panel-title {
+    color: #fff;
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-family: var(--bs-font-sans-serif);
+}
