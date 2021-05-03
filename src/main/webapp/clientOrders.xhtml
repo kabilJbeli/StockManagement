@@ -13,54 +13,49 @@
 	<title>Stock Management</title>
 	<h:outputStylesheet library="css" name="bootstrap.min.css" />
 	<h:outputStylesheet library="css" name="style.css" />
-	<script>
-		function showModal(e,id) {
-			e.preventDefault();
-		    document.getElementById("clients:userid").value = id;
 
-			$('#clientByCommandList').modal('show');
-
-		}
-	</script>
 </h:head>
 <body>
 	<ui:include src="/WEB-INF/Menu.xhtml"></ui:include>
-	<h:form>
+	<div class="container-fluid">
+		<h2 class="mt-4">Selected Client Orders:</h2>
+		<br />
+		<h:form>
 
-	<p:dataTable class="table  table-striped mt-3"
-								value="#{userCommandBean.getCommandsByUserId()}"
-								var="order" border="0" cellspacing="1" cellpadding="1">
-								<p:column>
-									<f:facet name="header">Order ID</f:facet>
+			<p:dataTable class="table  table-striped mt-3"
+				value="#{userCommandBean.getCommandsByUserId()}" var="order"
+				border="0" cellspacing="1" cellpadding="1">
+				<p:column>
+					<f:facet name="header">Order ID</f:facet>
                     #{order.idcommand}
                 </p:column>
-								<p:column>
-									<f:facet name="header">Quantity</f:facet>
+				<p:column>
+					<f:facet name="header">Quantity</f:facet>
                     #{order.quantity}
                 </p:column>
-								<p:column>
-									<f:facet name="header">Product Name</f:facet>
+				<p:column>
+					<f:facet name="header">Product Name</f:facet>
                     #{order.product.productname}
                 </p:column>
-                				<p:column>
-									<f:facet name="header">Product Name</f:facet>
+				<p:column>
+					<f:facet name="header">Product Name</f:facet>
                     #{order.status}
                 </p:column>
-								<p:column class="status">
-									<f:facet name="header">Action</f:facet>
-									<p:commandButton
-										action="#{userCommandBean.acceptOrder(order.idcommand)}"
-										value="Accept"  
-										disabled="#{order.status =='APPROVED' || order.status =='REJECTED'}" update="@form"
-										 />
-									<p:commandButton
-										action="#{userCommandBean.rejectOrder(order.idcommand)}"
-										value="Refuse" 
-										disabled="#{order.status =='APPROVED' || order.status =='REJECTED'}" update="@form"
-										 />
-								</p:column>
-							</p:dataTable>
-							</h:form>
-							
+				<p:column class="status">
+					<f:facet name="header">Action</f:facet>
+					<p:commandButton
+						action="#{userCommandBean.acceptOrder(order.idcommand)}"
+						value="Accept"
+						disabled="#{order.status =='APPROVED' || order.status =='REJECTED'}"
+						update="@form" />
+					<p:commandButton
+						action="#{userCommandBean.rejectOrder(order.idcommand)}"
+						value="Refuse"
+						disabled="#{order.status =='APPROVED' || order.status =='REJECTED'}"
+						update="@form" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</div>
 </body>
 </html>
