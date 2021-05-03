@@ -82,6 +82,10 @@ public class UserCommandBean implements Serializable {
 		return service.getUserCommands(userid);
 	}
 
+	public List<UserCommand> getCommandsByUserId() {
+
+		return service.getUserCommands(userId);
+	}
 	public void rejectOrder(int userid) {
 		service.updateOrder(userid, status.REJECTED);
 	}
@@ -89,5 +93,10 @@ public class UserCommandBean implements Serializable {
 	public void acceptOrder(int userid) {
 		service.updateOrder(userid, status.APPROVED);
 
+	}
+	
+	public String edit(int id) {
+		this.userId = id;
+		return "/clientOrders.xhtml?faces-redirect=true";
 	}
 }

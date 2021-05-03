@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+	<title>Stock Management</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css" />
+	<h:outputStylesheet library="css" name="style.css" />
+	<script>
+		function showModal(e,id) {
+			e.preventDefault();
+		    document.getElementById("clients:userid").value = id;
+
+			$('#clientByCommandList').modal('show');
+
+		}
+	</script>
+</h:head>
+<body>
+	<ui:include src="/WEB-INF/Menu.xhtml"></ui:include>
+	<h:form>
+
+	<p:dataTable class="table  table-striped mt-3"
+								value="#{userCommandBean.getCommandsByUserId()}"
+								var="order" border="0" cellspacing="1" cellpadding="1">
+								<p:column>
+									<f:facet name="header">Order ID</f:facet>
+                    #{order.idcommand}
+                </p:column>
+								<p:column>
+									<f:facet name="header">Quantity</f:facet>
+                    #{order.quantity}
+                </p:column>
+								<p:column>
+									<f:facet name="header">Product Name</f:facet>
+                    #{order.product.productname}
+                </p:column>
+                				<p:column>
+									<f:facet name="header">Product Name</f:facet>
+                    #{order.status}
+                </p:column>
+								<p:column class="status">
+									<f:facet name="header">Action</f:facet>
+									<p:commandButton
+										action="#{userCommandBean.acceptOrder(order.idcommand)}"
+										value="Accept"  
+										disabled="#{order.status =='APPROVED' || order.status =='REJECTED'}" update="@form"
+										 />
+									<p:commandButton
+										action="#{userCommandBean.rejectOrder(order.idcommand)}"
+										value="Refuse" 
+										disabled="#{order.status =='APPROVED' || order.status =='REJECTED'}" update="@form"
+										 />
+								</p:column>
+							</p:dataTable>
+							</h:form>
+							
+</body>
+</html>

@@ -2,16 +2,17 @@ package org.stocks.beans;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 import org.stocks.entities.Product;
 import org.stocks.entities.Type;
 import org.stocks.services.ProductService;
 
-
 @SessionScoped
-public class ProductBean  implements Serializable{
+public class ProductBean implements Serializable {
 
 	/**
 	 * 
@@ -21,7 +22,16 @@ public class ProductBean  implements Serializable{
 
 	int productType;
 	int selectedUser;
-	
+	Product updateProduct = null;
+
+	public Product getUpdateProduct() {
+		return updateProduct;
+	}
+
+	public void setUpdateProduct(Product updateProduct) {
+		this.updateProduct = updateProduct;
+	}
+
 	public int getSelectedUser() {
 		return selectedUser;
 	}
@@ -38,15 +48,16 @@ public class ProductBean  implements Serializable{
 		this.productType = productType;
 		Product product = null;
 		product = service.getProduct(productType);
-		if(product != null) {
+		if (product != null) {
 			productname = product.getProductname();
-			quantity =Integer.parseInt(product.getQuantity());
+			quantity = Integer.parseInt(product.getQuantity());
 			price = Integer.parseInt(product.getPrice());
-			
+
 		}
 	}
 
 	String productname;
+
 	public String getProductname() {
 		return productname;
 	}
@@ -73,6 +84,7 @@ public class ProductBean  implements Serializable{
 
 	int quantity;
 	int price;
+
 	public ProductService getService() {
 		return service;
 	}
@@ -80,27 +92,46 @@ public class ProductBean  implements Serializable{
 	public void setService(ProductService service) {
 		this.service = service;
 	}
-	
-	  public List<Product> getProducts() {
-	        return service.getAll();
-	    }
-	  
-	  public boolean removeProduct(int id) {
-		  return service.removeProduct(id);
-	  }
-	  
-	  public boolean createProduct() {
-		  Product product = new Product();
-		  Type type = new Type();
-		  type.setIdtype(productType);
-		  product.setPrice(String.valueOf(price));
-		  product.setQuantity(String.valueOf(quantity));
-		  product.setProductname(productname);		  
-		  product.setType(type);
-		  price=0;
-		  quantity=0;
-		  productname=null;		  
-		  return service.setProduct(product);
-	  }
-	    
+
+	public List<Product> getProducts() {
+		return service.getAll();
+	}
+
+	public boolean removeProduct(int id) {
+		return service.removeProduct(id);
+	}
+
+	public boolean createProduct() {
+		Product product = new Product();
+		Type type = new Type();
+		type.setIdtype(productType);
+		product.setPrice(String.valueOf(price));
+		product.setQuantity(String.valueOf(quantity));
+		product.setProductname(productname);
+		product.setType(type);
+		price = 0;
+		quantity = 0;
+		productname = null;
+		return service.setProduct(product);
+	}
+
+	public String updateSelectedProduct() {
+		System.out.println("dfkllj");
+		Type type = new Type();
+		type.setIdtype(productType);
+		updateProduct.setType(type);
+		service.updateProduct(updateProduct);
+		return "/index.xhtml?faces-redirect=true";
+
+	}
+
+	public String edit(int id) {
+		try {
+			updateProduct = service.getProduct(id);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return "/edit.xhtml?faces-redirect=true";
+	}
+
 }

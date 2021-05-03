@@ -22,48 +22,7 @@
 <body>
 	<ui:include src="/WEB-INF/Menu.xhtml"></ui:include>
 	<div class="container-fluid">
-		<h:form>
-			<div class="modal fade" id="updateProduct" tabindex="-1"
-				role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Add New
-								Product</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true"> &times;
-								</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<p:inputText placeholder="product name"
-								value="#{productBean.productname}" required="true" />
-							<br />
-							<p:inputText type="number" placeholder="Price"
-								value="#{productBean.price}" required="true" />
-							<br />
-							<p:inputText type="number" placeholder="Quantity"
-								value="#{productBean.quantity}" required="true" />
-							<br />
-							<h:selectOneMenu id="speciality_selection"
-								value="#{productBean.productType}" required="true">
-								<f:selectItems var="type" value="#{typeBean.types}"
-									itemLabel="#{type.typename}" itemValue="#{type.idtype}" />
-							</h:selectOneMenu>
-						</div>
-						<div class="modal-footer">
-					<button type="button" class="btn btn-secondary ui-button-text-only "
-								data-dismiss="modal"><span class="ui-button-text">Close</span></button>
-
-							<h:commandButton class="btn btn-primary" value="submit"
-								action="#{productBean.createProduct()}" update="@form" />
-						</div>
-					</div>
-				</div>
-			</div>
-		</h:form>
-
+		
 		<h:form>
 			<div class="modal fade" id="productModal" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -144,9 +103,9 @@
 						update="@form"></p:commandButton>
 
 
-					<p:commandButton type="button"
-						action="#{productBean.productType(product.idproduct)}"
-						class="btn btn-primary" value="Update" onclick="showModal()" />
+					<p:commandButton
+						action="#{productBean.edit(product.idproduct)}"
+						class="btn btn-primary" value="Update"  />
 				</p:column>
 			</p:dataTable>
 		</h:form>

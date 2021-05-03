@@ -8,7 +8,7 @@
 
 	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>/login.xhtml</welcome-file>
+		<welcome-file>faces/login.xhtml</welcome-file>
 	</welcome-file-list>
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -36,6 +36,10 @@
 		<url-pattern>*.jsf</url-pattern>
 	</servlet-mapping>
 
+<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
 
 	<servlet-mapping>
 		<servlet-name>Faces Servlet</servlet-name>

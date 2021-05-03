@@ -17,6 +17,15 @@ public class TypeBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private TypeService service;
 	private String typename;
+	private Type updateType;
+
+	public Type getUpdateType() {
+		return updateType;
+	}
+
+	public void setUpdateType(Type updateType) {
+		this.updateType = updateType;
+	}
 
 	public String getTypename() {
 		return typename;
@@ -48,4 +57,20 @@ public class TypeBean implements Serializable {
 		return service.removeType(idtype);
 	}
 	
+	public String updateSelectedType() {
+		service.updateType(updateType);
+		return "/types.xhtml?faces-redirect=true";
+
+	}
+
+
+	public String edit(int id) {
+		try {
+			updateType = service.getType(id);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return "/editType.xhtml?faces-redirect=true";
+	}
+
 }
