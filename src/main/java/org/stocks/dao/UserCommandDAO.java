@@ -115,11 +115,12 @@ public class UserCommandDAO implements IUserCommand {
 		List<UserCommand> commands = null;
 		try {
 			tx = session.beginTransaction();
-			String sql = "Select u from UserCommand u Where u.product= :product";
+			String sql = "Select u from UserCommand u Where u.product= :product and u.status = :status";
 			Product product = new Product();
 			product.setIdproduct(productId);
 			Query<UserCommand> query = session.createQuery(sql);
 			query.setParameter("product", product);
+			query.setParameter("status", Status.APPROVED);
 
 			tx.commit();
 			commands = query.getResultList();
