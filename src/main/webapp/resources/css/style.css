@@ -129,6 +129,18 @@ span.badge.APPROVED {
 span.badge.REJECTED {
     background: #dc3545;
 }
+td{
+	font-family:Arial !important;
+}
+span.stats.PENDING {
+    color: #ffc107;
+}
+span.stats.APPROVED {
+    color: #28a745;
+}
+span.stats.REJECTED {
+    color: #dc3545;
+}
 button.close {
     background: transparent;
     font-size: 25px;

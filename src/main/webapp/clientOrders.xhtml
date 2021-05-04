@@ -38,8 +38,8 @@
                     #{order.product.productname}
                 </p:column>
 				<p:column>
-					<f:facet name="header">Product Name</f:facet>
-                    #{order.status}
+					<f:facet name="header">Order Status</f:facet>
+                  <span class="stats #{order.status}">#{order.status}</span>  
                 </p:column>
 				<p:column class="status">
 					<f:facet name="header">Action</f:facet>
