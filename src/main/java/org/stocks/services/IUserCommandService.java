@@ -11,4 +11,6 @@ public interface IUserCommandService {
 	public List<UserCommand> getUserCommands(int iduser);
 
 	public void updateOrder(int idcommand, Status status);
+	public List<UserCommand> getApprovedCommandsByProductId(int productId);
+
 }

@@ -95,6 +95,16 @@ public class UserCommandBean implements Serializable {
 
 	}
 	
+	public int getApprovedCommandsByProductId(int productId) {	
+		List<UserCommand> command =service.getApprovedCommandsByProductId(productId);
+		int quantity=0;
+		for (UserCommand element : command) {
+			quantity += element.getQuantity();
+			}
+		
+		return quantity;
+	}
+	
 	public String edit(int id) {
 		this.userId = id;
 		return "/clientOrders.xhtml?faces-redirect=true";

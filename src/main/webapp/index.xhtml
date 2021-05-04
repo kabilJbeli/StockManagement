@@ -78,7 +78,7 @@
                 </p:column>
 				<p:column>
 					<f:facet name="header">Product Name</f:facet>
-                    #{product.productname}
+                    #{product.productname }
                 </p:column>
 				<p:column>
 					<f:facet name="header">Initial Quantity</f:facet>
@@ -86,7 +86,10 @@
                 </p:column>
                 	<p:column>
 					<f:facet name="header">Available Quantity</f:facet>
-                    #{product.quantity}
+					<span     style="#{product.quantity - userCommandBean.getApprovedCommandsByProductId(product.idproduct) >0 ? 'color:green; font-weight:bold;':'color:red; font-weight:bold;'}">
+                    #{product.quantity - userCommandBean.getApprovedCommandsByProductId(product.idproduct)}
+                    
+                    </span>
                 </p:column>
 				<p:column>
 					<f:facet name="header">Product Price</f:facet>

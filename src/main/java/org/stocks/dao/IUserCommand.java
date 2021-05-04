@@ -10,4 +10,5 @@ public boolean setCommand(UserCommand command);
 public List<UserCommand> getUserCommands(int iduser);
 public void updateOrder(int idcommand, Status status);
 public UserCommand getOrder(int id);
+public List<UserCommand> getApprovedCommandsByProductId(int productId);
 }

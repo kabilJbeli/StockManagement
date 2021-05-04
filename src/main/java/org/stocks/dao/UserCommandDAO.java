@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import org.stocks.entities.Product;
 import org.stocks.entities.Type;
 import org.stocks.entities.User;
 import org.stocks.entities.UserCommand;
@@ -103,6 +104,31 @@ public class UserCommandDAO implements IUserCommand {
 		}
 		session.close();
 		return command;
+	}
+
+	@Override
+	public List<UserCommand> getApprovedCommandsByProductId(int productId) {
+		// TODO Auto-generated method stub
+		SessionFactory factory = HibernateUtils.getSessionFactory();
+		Session session = factory.openSession();
+		Transaction tx = null;
+		List<UserCommand> commands = null;
+		try {
+			tx = session.beginTransaction();
+			String sql = "Select u from UserCommand u Where u.product= :product";
+			Product product = new Product();
+			product.setIdproduct(productId);
+			Query<UserCommand> query = session.createQuery(sql);
+			query.setParameter("product", product);
+
+			tx.commit();
+			commands = query.getResultList();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			session.close();
+		}
+		session.close();
+		return commands;
 	}
 
 }

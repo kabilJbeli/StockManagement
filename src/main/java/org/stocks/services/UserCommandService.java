@@ -36,4 +36,10 @@ public class UserCommandService implements IUserCommandService {
 		// TODO Auto-generated method stub
 		userCommandDAO.updateOrder(idcommand,status);
 	}
+
+	@Override
+	public List<UserCommand> getApprovedCommandsByProductId(int productId) {
+		// TODO Auto-generated method stub
+		return userCommandDAO.getApprovedCommandsByProductId(productId);
+	}
 }
