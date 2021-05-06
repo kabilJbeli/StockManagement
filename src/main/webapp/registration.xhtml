@@ -38,14 +38,19 @@
 
 					<p:outputLabel value="#{userBean.msgCreation}" style="color: green" />
 					<br />
+					<h:outputLabel for="username" value="User Name" />
 
-					<p:inputText placeholder="user name" value="#{userBean.username}"
-						required="true" />
+					<p:inputText name="username" placeholder="user name"
+						value="#{userBean.username}" required="true" />
 					<br />
-					<p:inputText placeholder="last name" value="#{userBean.lastname}"
-						required="true" />
+					<h:outputLabel for="lastname" value="Last Name" />
+
+					<p:inputText id="lastname" placeholder="last name"
+						value="#{userBean.lastname}" required="true" />
 					<br />
-					<p:password id="speciality_selection" placeholder="password"
+					<h:outputLabel for="password" value="Password" />
+
+					<p:password id="password" placeholder="password"
 						value="#{userBean.password}" required="true"></p:password>
 					<br />
 					<p:selectBooleanCheckbox class="mb-3 mt-1"

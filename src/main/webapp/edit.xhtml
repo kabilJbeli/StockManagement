@@ -18,27 +18,34 @@
 
 	<ui:include src="/WEB-INF/Menu.xhtml"></ui:include>
 	<div class="container-fluid">
-	<h2  class="mt-4">Product Update</h2>
-	<br/>
+		<h2 class="mt-4">Product Update</h2>
+		<br />
 		<h:form>
-			<p:inputText placeholder="product name"
+			<h:outputLabel for="name" value="Product Name" />
+
+			<p:inputText id="name" placeholder="product name"
 				value="#{productBean.updateProduct.productname}" required="true" />
 			<br />
-			<p:inputText type="number" placeholder="Price"
+			<h:outputLabel for="price" value="Price" />
+
+			<p:inputText id="price" type="number" placeholder="Price"
 				value="#{productBean.updateProduct.price}" required="true" />
 			<br />
-			<p:inputText type="number" placeholder="Quantity"
+			<h:outputLabel for="quantity" value="Quantity" />
+
+			<p:inputText name="quantity" type="number" placeholder="Quantity"
 				value="#{productBean.updateProduct.quantity}" required="true" />
 			<br />
-			<h:selectOneMenu id="speciality_selection"
-				value="#{productBean.productType}" required="true">
+			<h:outputLabel for="category" value="Category" />
+
+			<h:selectOneMenu id="category" value="#{productBean.productType}"
+				required="true">
 				<f:selectItems var="type" value="#{typeBean.types}"
 					itemLabel="#{type.typename}" itemValue="#{type.idtype}" />
 			</h:selectOneMenu>
 			<br />
-				<p:commandButton
-						action="#{productBean.updateSelectedProduct()}"
-						class="btn btn-primary mt-3" value="Update"  />
+			<p:commandButton action="#{productBean.updateSelectedProduct()}"
+				class="btn btn-primary mt-3" value="Update" />
 		</h:form>
 	</div>
 

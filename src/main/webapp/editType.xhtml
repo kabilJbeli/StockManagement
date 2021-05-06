@@ -21,7 +21,9 @@
 	<h2  class="mt-4">Category Update</h2>
 	<br/>
 		<h:form>
-		<p:inputText placeholder="type name" value="#{typeBean.updateType.typename}"
+					<h:outputLabel for="name" value="Category Name" />
+		
+		<p:inputText id="name" placeholder="Category Name" value="#{typeBean.updateType.typename}"
 								required="true" />
 								<br/>
 				<p:commandButton

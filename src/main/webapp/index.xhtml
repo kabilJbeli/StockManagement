@@ -22,7 +22,7 @@
 <body>
 	<ui:include src="/WEB-INF/Menu.xhtml"></ui:include>
 	<div class="container-fluid">
-		
+
 		<h:form>
 			<div class="modal fade" id="productModal" tabindex="-1" role="dialog"
 				aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -38,15 +38,23 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<p:inputText placeholder="product name"
+							<h:outputLabel for="name" value="Product Name" />
+
+							<p:inputText id="name" placeholder="product name"
 								value="#{productBean.productname}" required="true" />
 							<br />
-							<p:inputText type="number" placeholder="Price"
+							<h:outputLabel for="price" value="Price" />
+
+							<p:inputText type="number" id="price" placeholder="Price"
 								value="#{productBean.price}" required="true" />
 							<br />
-							<p:inputText type="number" placeholder="Quantity"
+							<h:outputLabel for="quantity" value="Quantity" />
+
+							<p:inputText id="quantity" type="number" placeholder="Quantity"
 								value="#{productBean.quantity}" required="true" />
 							<br />
+							<h:outputLabel for="speciality_selection" value="Category" />
+
 							<h:selectOneMenu id="speciality_selection"
 								value="#{productBean.productType}">
 								<f:selectItems var="type" value="#{typeBean.types}"
@@ -54,8 +62,11 @@
 							</h:selectOneMenu>
 						</div>
 						<div class="modal-footer">
-						<button type="button" class="btn btn-secondary ui-button-text-only "
-								data-dismiss="modal"><span class="ui-button-text">Close</span></button>
+							<button type="button"
+								class="btn btn-secondary ui-button-text-only "
+								data-dismiss="modal">
+								<span class="ui-button-text">Close</span>
+							</button>
 
 							<p:commandButton class="btn btn-primary" value="submit"
 								action="#{productBean.createProduct()}" update="@form" />
@@ -68,7 +79,7 @@
 			<button type="button" class="btn btn-primary" data-toggle="modal"
 				data-target="#productModal">Add New Product</button>
 			<h2 class="mt-4">Product List</h2>
-			<br/>
+			<br />
 			<p:dataTable class="table  table-striped"
 				value="#{productBean.products}" var="product" border="0"
 				cellspacing="1" cellpadding="1">
@@ -84,13 +95,15 @@
 					<f:facet name="header">Initial Quantity</f:facet>
                     #{product.quantity}
                 </p:column>
-                	<p:column>
+				<p:column>
 					<f:facet name="header">Available Quantity</f:facet>
-					<span     style="#{product.quantity - userCommandBean.getApprovedCommandsByProductId(product.idproduct) >0 ? 'color:green; font-weight:bold;':'color:red; font-weight:bold;'}">
-                    #{product.quantity - userCommandBean.getApprovedCommandsByProductId(product.idproduct)}
-                    
-                    </span>
-                </p:column>
+					<span
+						style="#{product.quantity - userCommandBean.getApprovedCommandsByProductId(product.idproduct) >0 ? 'color:green; font-weight:bold;':'color:red; font-weight:bold;'}">
+						#{product.quantity -
+						userCommandBean.getApprovedCommandsByProductId(product.idproduct)}
+
+					</span>
+				</p:column>
 				<p:column>
 					<f:facet name="header">Product Price</f:facet>
                     $ #{product.price}
@@ -106,9 +119,8 @@
 						update="@form"></p:commandButton>
 
 
-					<p:commandButton
-						action="#{productBean.edit(product.idproduct)}"
-						class="btn btn-primary" value="Update"  />
+					<p:commandButton action="#{productBean.edit(product.idproduct)}"
+						class="btn btn-primary" value="Update" />
 				</p:column>
 			</p:dataTable>
 		</h:form>

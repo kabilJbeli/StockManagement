@@ -33,7 +33,9 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<p:inputText placeholder="type name" value="#{typeBean.typename}"
+							<h:outputLabel for="type" value="Category Name" />
+						
+							<p:inputText name="type" placeholder="Category Name" value="#{typeBean.typename}"
 								required="true" />
 						</div>
 						<div class="modal-footer">

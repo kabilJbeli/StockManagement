@@ -30,8 +30,15 @@
                     #{order.idcommand}
                 </p:column>
 				<p:column>
-					<f:facet name="header">Quantity</f:facet>
+					<f:facet name="header">Requested Quantity</f:facet>
                     #{order.quantity}
+                </p:column>
+                	<p:column>
+					<f:facet name="header">Available Product Quantity</f:facet>
+					<span style="#{order.product.quantity - userCommandBean.getApprovedCommandsByProductId(order.product.idproduct) >0 ? 'color:green; font-weight:bold;':'color:red; font-weight:bold;'}">
+                    #{order.product.quantity -
+						userCommandBean.getApprovedCommandsByProductId(order.product.idproduct)}
+						</span>
                 </p:column>
 				<p:column>
 					<f:facet name="header">Product Name</f:facet>
@@ -44,11 +51,16 @@
 				<p:column class="status">
 					<f:facet name="header">Action</f:facet>
 					<p:commandButton
+								style="#{(order.product.quantity -
+						userCommandBean.getApprovedCommandsByProductId(order.product.idproduct)) - order.quantity > 0 ? 'color:green; font-weight:bold;':'color:red; font-weight:bold;'}"
 						action="#{userCommandBean.acceptOrder(order.idcommand)}"
 						value="Accept"
-						disabled="#{order.status =='APPROVED' || order.status =='REJECTED'}"
+						disabled="#{order.status =='APPROVED' || order.status =='REJECTED'  || !((order.product.quantity -
+						userCommandBean.getApprovedCommandsByProductId(order.product.idproduct)) - order.quantity > 0 ) }"
 						update="@form" />
+									
 					<p:commandButton
+		
 						action="#{userCommandBean.rejectOrder(order.idcommand)}"
 						value="Refuse"
 						disabled="#{order.status =='APPROVED' || order.status =='REJECTED'}"
